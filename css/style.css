@@ -46,7 +46,7 @@ body {
   background: var(--ink);
   color: #fff;
   font-family: Outfit, system-ui, sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased
 }
 
@@ -771,11 +771,14 @@ button.pill {
   width: var(--cw, 580px);
   height: var(--ch, 270px);
   margin: calc(var(--ch, 270px)/-2) 0 0 calc(var(--cw, 580px)/-2);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  background: #111 var(--img) center/cover no-repeat;
-  box-shadow: 0 22px 50px rgba(0, 0, 0, .28);
+  background: var(--paper) var(--img) center/cover no-repeat;
+  border: 1px solid rgba(0, 0, 0, .1);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, .22);
   will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   display: block
 }
 
@@ -785,6 +788,27 @@ button.pill {
   inset: 0;
   background: linear-gradient(120deg, rgba(255, 255, 255, .12), transparent 35%);
   pointer-events: none
+}
+
+.fcard[style*="--s1"],
+.fcard[style*="--s2"],
+.fcard[style*="--s3"],
+.fcard[style*="--s4"],
+.hcard[style*="--s1"],
+.hcard[style*="--s2"],
+.hcard[style*="--s3"],
+.hcard[style*="--s4"] {
+  background: transparent var(--img) center/contain no-repeat;
+  border: none;
+  box-shadow: none;
+  overflow: visible
+}
+
+.fcard[style*="--s1"]::after,
+.fcard[style*="--s2"]::after,
+.fcard[style*="--s3"]::after,
+.fcard[style*="--s4"]::after {
+  display: none
 }
 
 .f-cap {
@@ -824,13 +848,17 @@ button.pill {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: var(--hw, 220px);
-  height: var(--hh, 102px);
-  margin: calc(var(--hh, 102px)/-2) 0 0 calc(var(--hw, 220px)/-2);
-  border-radius: 6px;
-  background: #111 var(--img) center/cover no-repeat;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, .28);
-  will-change: transform, opacity
+  width: var(--hw, 360px);
+  height: var(--hh, 168px);
+  margin: calc(var(--hh, 168px)/-2) 0 0 calc(var(--hw, 360px)/-2);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--paper) var(--img) center/cover no-repeat;
+  border: 1px solid rgba(0, 0, 0, .1);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, .22);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden
 }
 
 .w-label {
@@ -1143,6 +1171,14 @@ button.pill {
 }
 
 @media (max-width:760px) {
+  #hero {
+    height: 110vh
+  }
+
+  #about {
+    height: 240vh
+  }
+
   #aboutCard .beam::before {
     --ba: 118deg;
     background: conic-gradient(from var(--ba, 118deg) at 36% -4%, transparent 0 4%, rgba(255, 255, 255, .2) 8%, rgba(255, 255, 255, .72) 14%, rgba(255, 255, 255, .22) 20%, transparent 25%)

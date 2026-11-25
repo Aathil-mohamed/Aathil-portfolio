@@ -50,18 +50,19 @@
   /* ---------- about: card grows, words split, spotlight ---------- */
   function updAbout() {
     if (!inView('about')) return;
-    var p = prog('about'), g = sstep(.05, .56, p);
+    var p = prog('about'), m = vw < 760, g = sstep(.05, m ? .42 : .56, p);
     var w0 = Math.min(vw * .62, 280), h0 = w0 * 1.12;
     card.style.width = lerp(w0, vw, g) + 'px'; card.style.height = lerp(h0, vh, g) + 'px'; card.style.borderRadius = lerp(20, 0, g) + 'px';
     var sp = g * vw * .37;
     w1.style.transform = 'translate3d(' + (-sp) + 'px,' + (-g * vh * .04) + 'px,0) scaleX(' + (1 + g * .5) + ')';
     w2.style.transform = 'translate3d(' + sp + 'px,' + (g * vh * .05) + 'px,0) scaleX(' + (1 + g * .5) + ')';
-    words.style.opacity = 1 - sstep(.5, .68, p);
-    beam.style.opacity = sstep(.3, .56, p);
-    var m = vw < 760;
+    words.style.opacity = 1 - sstep(m ? .22 : .5, m ? .42 : .68, p);
+    beam.style.opacity = sstep(m ? .18 : .3, m ? .42 : .56, p);
     fig.style.setProperty('--fig-x', lerp(50, m ? 54 : 73, g) + '%');
     fig.style.setProperty('--fig-y', lerp(55, m ? 58 : 50, g) + '%');
-    var u = sstep(.6, .78, p); ui.style.opacity = u; ui.style.transform = 'translate3d(0,' + ((1 - u) * 34) + 'px,0)';
+    var u = sstep(m ? .28 : .6, m ? .48 : .78, p);
+    ui.style.opacity = u;
+    ui.style.transform = 'translate3d(0,' + ((1 - u) * (m ? 20 : 34)) + 'px,0)';
     paint.style.transform = 'scale(' + (1.06 + p * .14) + ') translate3d(0,' + (-p * 40) + 'px,0)';
   }
   /* ---------- experience: horizontal track + RGB split ---------- */
@@ -97,7 +98,7 @@
   function updWorks() {
     if (!inView('works')) return;
     var p = prog('works'), N = hcards.length, m = vw < 760;
-    var hw = Math.min(vw * (m ? .42 : .22), 240), hh = Math.round(hw * (560 / 1200));
+    var hw = Math.min(vw * (m ? .75 : .38), 440), hh = Math.round(hw * (560 / 1200));
     wstage.style.setProperty('--hw', hw + 'px'); wstage.style.setProperty('--hh', hh + 'px');
     var R = Math.min(vw * (m ? .34 : .27), vh * .33), Ry = R * (m ? .95 : .8);
     var mix = 1 - sstep(.26, .5, p), rot = p * 2.4, a = clamp((p - .46) / .54) * (N - 1);
@@ -105,8 +106,8 @@
       var th = (i / N) * Math.PI * 2 + rot - Math.PI / 2;
       var hx = R * Math.cos(th), hy = Ry * Math.sin(th);
       var tan = (th * 180 / Math.PI + 90) % 180; if (tan > 90) tan -= 180; if (tan < -90) tan += 180; tan *= .7;
-      var d = i - a, cx = m ? 0 : vw * .16, cy = d * vh * .5, crx = clamp(-d * 36, -72, 72), cs = (m ? 1.75 : 1.55) * (1 - Math.min(Math.abs(d), 2) * .13), co = clamp(1.3 - Math.abs(d));
-      var x = lerp(cx, hx, mix), y = lerp(cy, hy, mix), rx = lerp(crx, 40, mix), rz = lerp(0, tan, mix), s = lerp(cs, 1, mix), o = lerp(co, 1, mix);
+      var d = i - a, cx = m ? 0 : vw * .16, cy = d * vh * .5, crx = clamp(-d * 36, -72, 72), cs = (1 - Math.min(Math.abs(d), 2) * .13), co = clamp(1.3 - Math.abs(d));
+      var x = lerp(cx, hx, mix), y = lerp(cy, hy, mix), rx = lerp(crx, 40, mix), rz = lerp(0, tan, mix), s = lerp(cs, 0.72, mix), o = lerp(co, 1, mix);
       c.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0) rotateX(' + rx + 'deg) rotateZ(' + rz + 'deg) scale(' + s + ')';
       c.style.opacity = o; c.style.zIndex = Math.round(50 - Math.abs(d) * 5);
     });

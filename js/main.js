@@ -78,7 +78,7 @@
   function updFeat() {
     if (!inView('feat')) return;
     var p = prog('feat'), n = fcards.length, a = p * (n - 1), m = vw < 760;
-    var cw = Math.min(vw * (m ? .8 : .52), 580), ch = cw * .6;
+    var cw = Math.min(vw * (m ? .85 : .54), 600), ch = Math.round(cw * (560 / 1200));
     fstage.style.setProperty('--cw', cw + 'px'); fstage.style.setProperty('--ch', ch + 'px');
     var sp = cw * (m ? .95 : 1.02);
     fcards.forEach(function (c, i) {
@@ -97,7 +97,7 @@
   function updWorks() {
     if (!inView('works')) return;
     var p = prog('works'), N = hcards.length, m = vw < 760;
-    var hw = Math.min(vw * (m ? .4 : .2), 230), hh = hw * .68;
+    var hw = Math.min(vw * (m ? .42 : .22), 240), hh = Math.round(hw * (560 / 1200));
     wstage.style.setProperty('--hw', hw + 'px'); wstage.style.setProperty('--hh', hh + 'px');
     var R = Math.min(vw * (m ? .34 : .27), vh * .33), Ry = R * (m ? .95 : .8);
     var mix = 1 - sstep(.26, .5, p), rot = p * 2.4, a = clamp((p - .46) / .54) * (N - 1);

@@ -871,6 +871,13 @@ button.pill {
   background-position: center
 }
 
+.pos { background-image: url(../assets/images/lankapos.webp); }
+.nv { background-image: url(../assets/images/novamart.webp); }
+.s1 { background-image: url(../assets/images/sliate-dashboard.webp); }
+.s2 { background-image: url(../assets/images/sliate-biometric.webp); }
+.s3 { background-image: url(../assets/images/transcription-dashboard.webp); }
+.s4 { background-image: url(../assets/images/transcription-live.webp); }
+
 .w-label {
   position: absolute;
   left: 50%;

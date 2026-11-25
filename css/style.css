@@ -769,7 +769,10 @@ button.pill {
   margin: calc(var(--ch, 336px)/-2) 0 0 calc(var(--cw, 560px)/-2);
   border-radius: 8px;
   overflow: hidden;
-  background: #111 var(--img) center top/cover no-repeat;
+  background-color: #111;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   box-shadow: 0 22px 50px rgba(0, 0, 0, .28);
   will-change: transform, opacity;
   display: block
@@ -781,38 +784,6 @@ button.pill {
   inset: 0;
   background: linear-gradient(120deg, rgba(255, 255, 255, .12), transparent 35%);
   pointer-events: none
-}
-
-.fcard.is-mobile {
-  background: transparent;
-  box-shadow: none;
-  overflow: visible;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(12px, 2vw, 24px)
-}
-
-.fcard.is-mobile::after {
-  display: none
-}
-
-.fcard.is-mobile .m-phone {
-  height: 110%;
-  aspect-ratio: 420/886;
-  background-size: cover;
-  background-position: center;
-  border-radius: min(2.2vw, 16px);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, .28);
-  transition: transform .35s ease
-}
-
-.fcard.is-mobile:hover .m-phone:first-child {
-  transform: translateY(-4px) rotate(-1.5deg)
-}
-
-.fcard.is-mobile:hover .m-phone:last-child {
-  transform: translateY(-4px) rotate(1.5deg)
 }
 
 .f-cap {
@@ -856,27 +827,22 @@ button.pill {
   height: var(--hh, 130px);
   margin: calc(var(--hh, 130px)/-2) 0 0 calc(var(--hw, 200px)/-2);
   border-radius: 6px;
-  background: #111 var(--img) center top/cover no-repeat;
+  background-color: #111;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   box-shadow: 0 16px 36px rgba(0, 0, 0, .28);
   will-change: transform, opacity
 }
 
-.hcard.is-mobile {
-  --mw: calc(var(--hw, 200px) * .56);
-  --mh: calc(var(--mw) * 2.11);
-  width: var(--mw);
-  height: var(--mh);
-  margin: calc(var(--mh)/-2) 0 0 calc(var(--mw)/-2);
-  border-radius: 12px;
-  background-position: center
-}
-
 .pos { background-image: url(../assets/images/lankapos.webp); }
 .nv { background-image: url(../assets/images/novamart.webp); }
-.s1 { background-image: url(../assets/images/sliate-dashboard.webp); }
-.s2 { background-image: url(../assets/images/sliate-biometric.webp); }
-.s3 { background-image: url(../assets/images/transcription-dashboard.webp); }
-.s4 { background-image: url(../assets/images/transcription-live.webp); }
+.s1, .s2 { background-image: url(../assets/images/sliate-preview.webp); }
+.s3, .s4 { background-image: url(../assets/images/transcription-preview.webp); }
+.shot-s1 { background-image: url(../assets/images/sliate-dashboard.webp); }
+.shot-s2 { background-image: url(../assets/images/sliate-biometric.webp); }
+.shot-s3 { background-image: url(../assets/images/transcription-dashboard.webp); }
+.shot-s4 { background-image: url(../assets/images/transcription-live.webp); }
 
 .w-label {
   position: absolute;
@@ -1029,20 +995,15 @@ button.pill {
   border-color: #111
 }
 
+.pos-img, .nv-img {
+  background-size: cover;
+  background-position: center;
+}
 .pos-img {
-  background-image: var(--pos)
+  background-image: url(../assets/images/lankapos.webp);
 }
-
-.sl-img {
-  background-image: var(--s1)
-}
-
 .nv-img {
-  background-image: var(--nv)
-}
-
-.tr-img {
-  background-image: var(--s3)
+  background-image: url(../assets/images/novamart.webp);
 }
 
 /* services */

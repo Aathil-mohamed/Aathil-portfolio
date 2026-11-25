@@ -1028,6 +1028,22 @@ button.pill {
   background-image: var(--s3)
 }
 
+.shot-s1 {
+  background-image: var(--shot-s1)
+}
+
+.shot-s2 {
+  background-image: var(--shot-s2)
+}
+
+.shot-s3 {
+  background-image: var(--shot-s3)
+}
+
+.shot-s4 {
+  background-image: var(--shot-s4)
+}
+
 /* services */
 #services {
   background: var(--paper);
